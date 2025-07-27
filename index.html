@@ -17,18 +17,18 @@
         }
         h1 {
             color: #4CAF50;
-            font-size: 2.2em; /* Relative to body font-size */
+            font-size: 2.2em;
             margin-bottom: 10px;
         }
         h2 {
             color: #2e7d32;
-            font-size: 1.8em; /* Relative to body font-size */
+            font-size: 1.8em;
             margin-top: 40px;
             margin-bottom: 15px;
         }
         h3 {
             color: #1b5e20;
-            font-size: 1.4em; /* Relative to body font-size */
+            font-size: 1.4em;
             margin-top: 30px;
             margin-bottom: 10px;
             text-align: left;
@@ -42,16 +42,16 @@
             text-align: left;
             list-style-position: inside;
             padding-left: 20px;
-            font-size: 1em; /* Eredita 16px da body */
+            font-size: 1em;
         }
         li {
             margin-bottom: 5px;
         }
         .intro-text, .content-section {
-            max-width: 900px; /* Consolidato per coerenza */
+            max-width: 900px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff; /* Aggiunto background per intro-text se diverso */
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             font-size: 1.1em;
@@ -60,9 +60,9 @@
             text-align: center;
         }
         .content-section {
-            background-color: #fff; /* Assicurati che content-section sia bianco */
-            font-style: normal; /* Reimposta per il contenuto principale */
-            color: #333; /* Reimposta il colore per il contenuto principale */
+            background-color: #fff;
+            font-style: normal;
+            color: #333;
             text-align: left;
         }
         .image-grid {
@@ -100,10 +100,10 @@
             font-weight: bold;
             color: #2e7d32;
             margin: 5px 0 0;
-            font-size: 1em; /* Eredita 16px da body */
+            font-size: 1em;
         }
         .ipfs-link {
-            font-size: 0.85em; /* Leggermente più piccolo del testo base */
+            font-size: 0.85em;
             color: #555;
             word-break: break-all;
         }
@@ -118,7 +118,7 @@
             margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid #eee;
-            font-size: 0.8em; /* Più piccolo per il footer */
+            font-size: 0.8em;
             color: #777;
             text-align: center;
         }
@@ -133,8 +133,8 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9em; /* Relativo alla dimensione base del body */
-            touch-action: manipulation; /* AGGIUNTA QUI PER MIGLIORARE LA REATTIVITÀ TOUCH */
+            font-size: 0.9em;
+            touch-action: manipulation;
         }
         .lang-button:hover {
             background-color: #0056b3;
@@ -142,70 +142,33 @@
         .image-instruction {
             color: green;
             font-family: Arial, sans-serif;
-            font-size: 1.1em; /* Relativo alla dimensione base del body (16px * 1.1 = 17.6px) */
+            font-size: 1.1em;
             text-align: center;
             margin-top: -20px;
             margin-bottom: 10px;
             font-weight: bold;
         }
-
-        /* --- Media Queries per la Responsività --- */
-        @media (max-width: 768px) {
-            body {
-                margin: 10px;
-                font-size: 15px; /* Riduci leggermente la base font size */
-            }
-            h1 {
-                font-size: 1.8em;
-            }
-            h2 {
-                font-size: 1.5em;
-            }
-            h3 {
-                font-size: 1.2em;
-            }
-            .intro-text, .content-section {
-                padding: 15px;
-                margin: 15px auto;
-                max-width: 100%; /* Permetti che occupi più spazio su schermi piccoli */
-            }
-            .image-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Riduci la dimensione minima delle card */
-                gap: 15px;
-                padding: 15px;
-            }
-            .image-card {
-                padding: 10px;
-            }
-            .lang-switcher {
-                text-align: center; /* Centra il pulsante lingua */
-            }
+        /* Stili per la Privacy Policy */
+        .privacy-policy-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f8f8f8; /* Sfondo leggermente diverso */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+            border: 1px solid #eee;
         }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-            h1 {
-                font-size: 1.6em;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            h3 {
-                font-size: 1.1em;
-            }
-            .image-grid {
-                grid-template-columns: 1fr; /* Una sola colonna su smartphone */
-                gap: 10px;
-                padding: 10px;
-            }
-            .image-card img {
-                max-width: 80%; /* Le immagini potrebbero essere troppo grandi in colonna singola */
-            }
-            .image-instruction {
-                font-size: 1em;
-            }
+        .privacy-policy-section h2, .privacy-policy-section h3 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .privacy-policy-section p {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .privacy-policy-section ul {
+            font-size: 0.95em;
         }
     </style>
 </head>
@@ -215,7 +178,8 @@
         <button class="lang-button" id="toggleLangButton" onclick="switchLanguage()" aria-live="polite" aria-label="Cambia lingua">Traduci e leggi in lingua inglese</button>
     </div>
 
-    <main role="main"> <h1 data-key="main_page_title" id="main_page_title">Collezione NFT "Big Brother The Musical"</h1>
+    <main role="main">
+        <h1 data-key="main_page_title" id="main_page_title">Collezione NFT "Big Brother The Musical"</h1>
         <h2 data-key="main_subtitle" id="main_subtitle">Crowdfunding artistico musicale.<br>Presentazione alla stampa</h2>
 
         <div class="intro-text" role="region" aria-labelledby="main_page_title">
@@ -286,10 +250,31 @@
                 <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://your-project-url.com&title=Big%20Brother%20The%20Musical%20-%20NFT%20Crowdfunding&summary=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!" target="_blank" title="Condividi su LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
+        
+        <section class="privacy-policy-section" id="privacy-policy" role="region" aria-labelledby="privacy_policy_title">
+            <h2 data-key="privacy_policy_title" id="privacy_policy_title">Privacy Policy</h2>
+            <h3 data-key="data_collection_title">Raccolta Dati Personali</h3>
+            <p data-key="data_collection_para1">Questo sito web ("Collezione NFT Big Brother The Musical") **non raccoglie direttamente alcuna informazione personale identificabile (PII)** dagli utenti. Non vengono richiesti nomi, indirizzi email, numeri di telefono o altre informazioni personali.</p>
+            <h3 data-key="cookies_tracking_title">Cookie e Tecnologie di Tracciamento</h3>
+            <p data-key="cookies_tracking_para1">Non utilizziamo cookie o altre tecnologie di tracciamento per monitorare il comportamento degli utenti, per scopi di analisi, marketing o personalizzazione della navigazione. La tua esperienza di navigazione non viene tracciata da questo sito.</p>
+            <h3 data-key="ipfs_content_title">Contenuti Ospitati su IPFS</h3>
+            <p data-key="ipfs_content_para1">Le immagini e i metadati degli NFT sono ospitati sul **InterPlanetary File System (IPFS)** tramite gateway pubblici (ad esempio, ipfs.io). IPFS è una rete decentralizzata. Non abbiamo controllo sui dati che i gateway IPFS potrebbero raccogliere o sulle loro pratiche di privacy. Le informazioni visualizzate tramite IPFS sono accessibili pubblicamente sulla rete decentralizzata.</p>
+            <h3 data-key="blockchain_data_title">Dati Blockchain</h3>
+            <p data-key="blockchain_data_para1">Tutte le transazioni relative agli NFT avvengono sulla blockchain di Polygon. I dati registrati sulla blockchain (come gli indirizzi dei wallet che interagiscono con il nostro Smart Contract) sono **pubblici e immutabili**. Noi non raccogliamo né memorizziamo dati privati relativi alle transazioni blockchain. La tua partecipazione avviene in modo trasparente sulla blockchain.</p>
+            <h3 data-key="external_links_title">Collegamenti Esterni</h3>
+            <p data-key="external_links_para1">Questa pagina contiene collegamenti a piattaforme e servizi esterni (es. GitHub, piattaforme social, explorer della blockchain). Non siamo responsabili per le pratiche sulla privacy o il contenuto di questi siti esterni. Ti invitiamo a leggere le informative sulla privacy di tali servizi.</p>
+            <h3 data-key="changes_policy_title">Modifiche a questa Policy</h3>
+            <p data-key="changes_policy_para1">Questa Policy sulla Privacy potrebbe essere aggiornata in futuro per riflettere eventuali cambiamenti nelle nostre pratiche. La data dell'ultima revisione sarà indicata in fondo a questa sezione.</p>
+            <p data-key="last_updated_text">Ultimo aggiornamento: 27 Luglio 2025</p>
+            <h3 data-key="contact_title">Contatti</h3>
+            <p data-key="contact_para1">Per qualsiasi domanda o chiarimento riguardo questa Privacy Policy, puoi contattarci tramite i canali ufficiali del progetto "Big Brother The Musical".</p>
+        </section>
+        
     </main>
 
     <div class="footer">
         <p data-key="footer_text">Powered by Big Brother The Musical - Smart Contract by Avv. Marcello Stanca © Giugno 2025</p>
+        <p><a href="#privacy-policy" data-key="footer_privacy_link">Privacy Policy</a></p>
     </div>
 
     <script>
@@ -372,7 +357,26 @@
                 quality8: "**Copyright Protection:** Invisible electronic watermark system and disqualification mechanism to combat copyright infringements.",
                 call_to_action_final_para: "Investing in \"Big Brother The Musical\" means supporting art, innovating finance, and owning a piece of digital history. Join us! ✨",
                 share_text: "Share:",
-                footer_text: "Powered by Big Brother The Musical - Smart Contract by Avv. Marcello Stanca © June 2025"
+                footer_text: "Powered by Big Brother The Musical - Smart Contract by Avv. Marcello Stanca © June 2025",
+
+                // Privacy Policy Translations
+                privacy_policy_title: "Privacy Policy",
+                data_collection_title: "Collection of Personal Data",
+                data_collection_para1: "This website (\"Big Brother The Musical NFT Collection\") **does not directly collect any personally identifiable information (PII)** from users. No names, email addresses, phone numbers, or other personal information are requested.",
+                cookies_tracking_title: "Cookies and Tracking Technologies",
+                cookies_tracking_para1: "We do not use cookies or other tracking technologies to monitor user behavior, for analytics, marketing, or personalization of Browse. Your Browse experience is not tracked by this site.",
+                ipfs_content_title: "Content Hosted on IPFS",
+                ipfs_content_para1: "NFT images and metadata are hosted on the **InterPlanetary File System (IPFS)** via public gateways (e.g., ipfs.io). IPFS is a decentralized network. We have no control over data that IPFS gateways may collect or their privacy practices. Information displayed via IPFS is publicly accessible on the decentralized network.",
+                blockchain_data_title: "Blockchain Data",
+                blockchain_data_para1: "All NFT transactions occur on the Polygon blockchain. Data recorded on the blockchain (such as wallet addresses interacting with our Smart Contract) are **public and immutable**. We do not collect or store private blockchain transaction data. Your participation occurs transparently on the blockchain.",
+                external_links_title: "External Links",
+                external_links_para1: "This page contains links to external platforms and services (e.g., GitHub, social media platforms, blockchain explorers). We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of such services.",
+                changes_policy_title: "Changes to this Policy",
+                changes_policy_para1: "This Privacy Policy may be updated in the future to reflect any changes in our practices. The date of the last revision will be indicated at the bottom of this section.",
+                last_updated_text: "Last updated: July 27, 2025",
+                contact_title: "Contact",
+                contact_para1: "For any questions or clarifications regarding this Privacy Policy, you can contact us through the official channels of the \"Big Brother The Musical\" project.",
+                footer_privacy_link: "Privacy Policy" // Text for the link in the footer
             }
         };
 
@@ -390,7 +394,7 @@
                 const key = element.getAttribute('data-key');
                 if (langData[key]) {
                     // Handle HTML content if present (like links or bold tags)
-                    if (element.tagName === 'P' || element.tagName === 'LI' || element.tagName === 'SPAN') {
+                    if (element.tagName === 'P' || element.tagName === 'LI' || element.tagName === 'SPAN' || element.tagName === 'A') { // Added 'A' for link text
                         element.innerHTML = langData[key];
                     } else {
                         element.textContent = langData[key];

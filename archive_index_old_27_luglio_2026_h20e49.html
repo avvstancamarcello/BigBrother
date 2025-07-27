@@ -153,7 +153,7 @@
             max-width: 900px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #f8f8f8;
+            background-color: #f8f8f8; /* Sfondo leggermente diverso */
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             text-align: left;
@@ -169,83 +169,6 @@
         }
         .privacy-policy-section ul {
             font-size: 0.95em;
-        }
-        /* Nuovo stile per la nota di sicurezza */
-        .security-recommendation-note {
-            max-width: 900px;
-            margin: 30px auto; /* Meno margine della privacy policy */
-            padding: 20px;
-            background-color: #fff3cd; /* Giallo chiaro per avvisi */
-            border: 1px solid #ffeeba;
-            border-radius: 8px;
-            color: #856404; /* Testo scuro per contrasto */
-            text-align: justify;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        .security-recommendation-note h3 {
-            color: #856404;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        /* --- Media Queries per la Responsività --- */
-        @media (max-width: 768px) {
-            body {
-                margin: 10px;
-                font-size: 15px;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
-            h2 {
-                font-size: 1.5em;
-            }
-            h3 {
-                font-size: 1.2em;
-            }
-            .intro-text, .content-section, .security-recommendation-note, .privacy-policy-section {
-                padding: 15px;
-                margin: 15px auto;
-                max-width: 100%;
-            }
-            .image-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 15px;
-                padding: 15px;
-            }
-            .image-card {
-                padding: 10px;
-            }
-            .lang-switcher {
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-            h1 {
-                font-size: 1.6em;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            h3 {
-                font-size: 1.1em;
-            }
-            .image-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-                padding: 10px;
-            }
-            .image-card img {
-                max-width: 80%;
-            }
-            .image-instruction {
-                font-size: 1em;
-            }
         }
     </style>
 </head>
@@ -347,14 +270,6 @@
             <p data-key="contact_para1">Per qualsiasi domanda o chiarimento riguardo questa Privacy Policy, puoi contattarci tramite i canali ufficiali del progetto "Big Brother The Musical".</p>
         </section>
         
-        <section class="security-recommendation-note" id="security-recommendation-note" role="region" aria-labelledby="security_recommendation_title">
-            <h3 data-key="security_recommendation_title" id="security_recommendation_title">Raccomandazioni per la Visualizzazione Contenuti IPFS</h3>
-            <p data-key="security_reco_para1">Alcuni link di questo sito puntano a contenuti decentralizzati su IPFS (<a href="https://ipfs.io/ipfs/bafybeicrgxjcqb7h6gj7qkceyxshalzc6ra4gu6kzrwjcq2ttg6yl4vmhq" target="_blank" rel="noopener noreferrer">vedi esempio</a>). Potrebbero comparire avvisi di sicurezza da parte di Windows Defender SmartScreen o altri browser/antivirus. Ciò accade perché i contenuti IPFS, pur essendo normalmente sicuri e immutabili, sono serviti tramite gateway pubblici e non tramite domini web tradizionali, potendo scatenare warning automatici.</p>
-            <p data-key="security_reco_para2">**Consiglio:** Se ritieni che il contenuto sia sicuro e si tratta di un falso positivo, ti invitiamo caldamente a inviare feedback positivo al fornitore del tuo browser (es. Microsoft per Edge) o del tuo antivirus. Questa pratica è trasparente e aiuta a migliorare la reputazione del contenuto decentralizzato.</p>
-            <p data-key="security_reco_para3">Per Microsoft Defender SmartScreen, puoi solitamente inviare feedback direttamente tramite il popup dell’avviso che compare. Cerca l'opzione "Ritengo si tratti di un sito Web sicuro" o "Segnala che questo sito non contiene rischi".</p>
-            <p data-key="security_reco_para4">Si prega di procedere con la visualizzazione di tali link **solo se l’utente si fida pienamente della fonte** (ovvero, il progetto "Big Brother The Musical" e i suoi autori). Il web master e gli autori di questa pagina non dispongono di controllo diretto sui warning emessi dai browser Edge di Microsoft, o da Microsoft Defender.</p>
-        </section>
-
     </main>
 
     <div class="footer">
@@ -461,14 +376,7 @@
                 last_updated_text: "Last updated: July 27, 2025",
                 contact_title: "Contact",
                 contact_para1: "For any questions or clarifications regarding this Privacy Policy, you can contact us through the official channels of the \"Big Brother The Musical\" project.",
-                footer_privacy_link: "Privacy Policy",
-
-                // Security Recommendation Translations
-                security_recommendation_title: "Recommendations for Viewing IPFS Content",
-                security_reco_para1: "Some links on this site point to decentralized content on IPFS (<a href=\"https://ipfs.io/ipfs/bafybeicrgxjcqb7h6gj7qkceyxshalzc6ra4gu6kzrwjcq2ttg6yl4vmhq\" target=\"_blank\" rel=\"noopener noreferrer\">see example</a>). Security warnings from Windows Defender SmartScreen or other browsers/antiviruses may appear. This happens because IPFS content, while normally secure and immutable, is served via public gateways and not via traditional web domains, which can trigger automatic warnings.",
-                security_reco_para2: "We advise you to send positive feedback to your browser provider (e.g., Microsoft for Edge) or your antivirus if you believe the content is safe and it's a false positive. This practice is transparent and helps improve the reputation of decentralized content.",
-                security_reco_para3: "For Microsoft Defender SmartScreen, you can usually send feedback directly via the warning popup that appears. Look for the option \"I believe this is a safe website\" or \"Report that this site poses no risks.\"",
-                security_reco_para4: "Please proceed with viewing such links **only if the user fully trusts the source** (i.e., the \"Big Brother The Musical\" project and its authors). The webmaster and authors of this page have no direct control over warnings issued by Edge browsers or Microsoft Defender."
+                footer_privacy_link: "Privacy Policy" // Text for the link in the footer
             }
         };
 
@@ -486,7 +394,7 @@
                 const key = element.getAttribute('data-key');
                 if (langData[key]) {
                     // Handle HTML content if present (like links or bold tags)
-                    if (element.tagName === 'P' || element.tagName === 'LI' || element.tagName === 'SPAN' || element.tagName === 'A' || element.tagName === 'H2' || element.tagName === 'H3') { // Added H2, H3 for section titles
+                    if (element.tagName === 'P' || element.tagName === 'LI' || element.tagName === 'SPAN' || element.tagName === 'A') { // Added 'A' for link text
                         element.innerHTML = langData[key];
                     } else {
                         element.textContent = langData[key];

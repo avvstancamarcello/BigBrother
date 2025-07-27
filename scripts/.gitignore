@@ -1,0 +1,35 @@
+# Dependency directories
+node_modules/
+
+# Hardhat files
+cache/
+artifacts/
+
+# Environment variables
+.env
+.env.*
+
+# Common IDE/OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Coverage / Build
+coverage/
+.nyc_output/
+build/
+dist/
+
+# Other common project specific
+*.tgz
+*.pid
+*.seed
+*.pid.lock
+
+# Optional: Hardhat Ignition deployments (if not already in cache)
+ignition/deployments/

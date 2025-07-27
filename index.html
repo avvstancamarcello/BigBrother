@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="page_title">BIG BROTHER The Musical - Collezione Immagini NFT</title>
+    <title data-key="page_title">Big Brother The Musical - Collezione Immagini NFT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+    <meta name="theme-color" content="#4CAF50"> <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
@@ -134,6 +134,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em; /* Relativo alla dimensione base del body */
+            touch-action: manipulation; /* AGGIUNTA QUI PER MIGLIORARE LA REATTIVITÀ TOUCH */
         }
         .lang-button:hover {
             background-color: #0056b3;
@@ -149,7 +150,7 @@
         }
 
         /* --- Media Queries per la Responsività --- */
-        @media (max-width: 768px) { /* Per tablet e schermi più piccoli */
+        @media (max-width: 768px) {
             body {
                 margin: 10px;
                 font-size: 15px; /* Riduci leggermente la base font size */
@@ -181,9 +182,9 @@
             }
         }
 
-        @media (max-width: 480px) { /* Per smartphone */
+        @media (max-width: 480px) {
             body {
-                font-size: 14px; /* Riduci ulteriormente la base font size */
+                font-size: 14px;
             }
             h1 {
                 font-size: 1.6em;
@@ -203,7 +204,7 @@
                 max-width: 80%; /* Le immagini potrebbero essere troppo grandi in colonna singola */
             }
             .image-instruction {
-                font-size: 1em; /* Riduci la dimensione dell'istruzione */
+                font-size: 1em;
             }
         }
     </style>
@@ -211,80 +212,81 @@
 <body>
 
     <div class="lang-switcher">
-        <button class="lang-button" id="toggleLangButton" onclick="switchLanguage()">Traduci e leggi in lingua inglese</button>
+        <button class="lang-button" id="toggleLangButton" onclick="switchLanguage()" aria-live="polite" aria-label="Cambia lingua">Traduci e leggi in lingua inglese</button>
     </div>
 
-    <h1 data-key="main_page_title">Collezione NFT "Big Brother The Musical"</h1>
-    <h2 data-key="main_subtitle">Crowdfunding artistico musicale.<br>Presentazione alla stampa</h2>
+    <main role="main"> <h1 data-key="main_page_title" id="main_page_title">Collezione NFT "Big Brother The Musical"</h1>
+        <h2 data-key="main_subtitle" id="main_subtitle">Crowdfunding artistico musicale.<br>Presentazione alla stampa</h2>
 
-    <div class="intro-text">
-        <p data-key="intro_para1">Osservate queste immagini. Quella che vedete non è una semplice galleria di immagini, ma qualcosa di veramente innovativo! ✨ È una galleria di **valori digitali**, opere d'arte originali, rappresentative di un progetto creativo ambizioso, tutelato da copyright, costruttore di nuovi valori per i possessori, ma condivisibile. 💡</p>
-        <p data-key="intro_para2">Vi spiego con ordine 👇</p>
-    </div>
-
-    <p data-key="image_instruction_text" class="image-instruction">Mostra immagine a schermo intero con un click su qualsiasi immagine</p>
-
-    <div class="image-grid" id="image-container">
+        <div class="intro-text" role="region" aria-labelledby="main_page_title">
+            <p data-key="intro_para1">Osservate queste immagini. Quella che vedete non è una semplice galleria di immagini, ma qualcosa di veramente innovativo! ✨ È una galleria di **valori digitali**, opere d'arte originali, rappresentative di un progetto creativo ambizioso, tutelato da copyright, costruttore di nuovi valori per i possessori, ma condivisibile. 💡</p>
+            <p data-key="intro_para2">Vi spiego con ordine 👇</p>
         </div>
 
-    <div class="content-section">
-        <h2 data-key="official_presentation_title">Presentazione Ufficiale: "Big Brother The Musical" – L'Opera Definitiva Finanziata dalla Blockchain 🎉</h2>
+        <p data-key="image_instruction_text" class="image-instruction" id="image_instruction">Mostra immagine a schermo intero con un click su qualsiasi immagine</p>
 
-        <h3 data-key="section_intro_project">Introduzione al Progetto 🎭</h3>
-        <p data-key="intro_project_para1">Io sono qui oggi per presentarvi un progetto che trascende i confini dell'arte e della tecnologia: "Big Brother The Musical". Non è solo una nuova opera lirica e teatrale; è un ponte tra la genialità creativa e il futuro del finanziamento decentralizzato. Dietro questa ambizione, c'è un team d'eccellenza e una solida infrastruttura digitale che cambierà il modo di concepire il crowdfunding per le grandi produzioni artistiche.</p>
+        <div class="image-grid" id="image-container" role="region" aria-labelledby="image_instruction">
+            </div>
 
-        <h3 data-key="section_philosophy_defi">La Filosofia DeFi e il Vantaggio degli NFT 🔗</h3>
-        <p data-key="philosophy_defi_para1">Io ve lo spiego in maniera semplice, a voi, i nostri futuri sponsor. Immaginate la finanza decentralizzata (DeFi) come un meccanismo che aggrega gli investimenti non tramite banche o intermediari tradizionali, ma direttamente attraverso la comunità globale, con la massima trasparenza. La convenienza di aggregare investimenti tramite la vendita degli NFT (Non-Fungible Token) è straordinaria: voi investite in un bene digitale unico, che acquisisce valore con il successo del progetto, e al tempo stesso sostenete direttamente un'opera d'arte grandiosa. 🚀</p>
+        <div class="content-section" role="region" aria-labelledby="official_presentation_title">
+            <h2 data-key="official_presentation_title" id="official_presentation_title">Presentazione Ufficiale: "Big Brother The Musical" – L'Opera Definitiva Finanziata dalla Blockchain 🎉</h2>
 
-        <h3 data-key="section_smart_contract">Lo Smart Contract: Il Cuore Tecnologico della Produzione 🛡️</h3>
-        <p data-key="smart_contract_para1">Il cuore pulsante di questa iniziativa: lo Smart Contract "Big Brother The Musical", la nostra "Zecca Digitale". È con immenso orgoglio che io, in qualità di presentatore, evidenzio la sua paternità: l'autore e regista di questo capolavoro di codice è l'**Avvocato Marcello Stanca di Firenze** <a href="https://github.com/avvstancamarcello" target="_blank">@AvvMarcelloStanca</a>. Egli ha concepito e realizzato uno Smart Contract che è stato verificato e accettato dalla rete Blockchain, una garanzia di affidabilità e trasparenza in un mondo in continua evoluzione.</p>
-        <p data-key="smart_contract_para2">Ho assistito in prima persona alla genesi di questo Smart Contract e posso testimoniare che è un'opera **complessa e articolata, ma al tempo stesso incredibilmente robusta e resistente agli attacchi informatici di malware o virus**. Il lavoro necessario all'Avvocato Stanca è stato pionieristico; egli ha affrontato la costruzione dello Smart Contract come un **corpus unico, efficace ed autosufficiente**.</p>
-        <p data-key="smart_contract_para3">L'implementazione delle sue funzioni di sicurezza non è stata una mera formalità. La profonda interazione tra il frontend che vedete, l'Interplanetary File System (IPFS) che custodisce i nostri preziosi asset digitali, e la compatibilità impeccabile con le logiche degli operatori del mercato digitale – da giganti come **MetaMask e Coinbase Wallet** alle piattaforme di offerta come **OpenSea** – ha comportato il superamento di fasi estremamente critiche. La necessità di elaborare numerose versioni della struttura, delle librerie e delle dipendenze è stata una sfida ardua, ma superata con maestria, garantendo un'interoperabilità fluida e sicura. 💪</p>
+            <h3 data-key="section_intro_project" id="section_intro_project">Introduzione al Progetto 🎭</h3>
+            <p data-key="intro_project_para1">Io sono qui oggi per presentarvi un progetto che trascende i confini dell'arte e della tecnologia: "Big Brother The Musical". Non è solo una nuova opera lirica e teatrale; è un ponte tra la genialità creativa e il futuro del finanziamento decentralizzato. Dietro questa ambizione, c'è un team d'eccellenza e una solida infrastruttura digitale che cambierà il modo di concepire il crowdfunding per le grandi produzioni artistiche.</p>
 
-        <h3 data-key="section_blockchain_security">La Tracciabilità su Blockchain: Trasparenza e Sicurezza 🌍</h3>
-        <p data-key="blockchain_security_para1">Ogni singola transazione è tracciabile e immediatamente registrata su una rete blockchain mondiale. Questo è possibile grazie a un registro distribuito su numerosi nodi in cloud, indipendenti e, soprattutto, **non alterabili**. Questo sistema di registrazione consente alla rete Ethereum-Polygon di valorizzare ed esaltare in tempo reale la crescita degli investimenti e di ogni transazione legata al contratto.</p>
-        <p data-key="blockchain_security_para2">Un punto cruciale per voi, sponsor e investitori: la proprietà di ogni NFT acquistato dagli utenti **rimane permanentemente nel wallet del proprietario**. Ogni trasferimento di proprietà degli NFT, anche del valore minimo, è immediatamente e indelebilmente registrato, garantendo una trasparenza senza precedenti e una certezza del diritto che nessun sistema tradizionale può eguagliare. 🔒</p>
+            <h3 data-key="section_philosophy_defi" id="section_philosophy_defi">La Filosofia DeFi e il Vantaggio degli NFT 🔗</h3>
+            <p data-key="philosophy_defi_para1">Io ve lo spiego in maniera semplice, a voi, i nostri futuri sponsor. Immaginate la finanza decentralizzata (DeFi) come un meccanismo che aggrega gli investimenti non tramite banche o intermediari tradizionali, ma direttamente attraverso la comunità globale, con la massima trasparenza. La convenienza di aggregare investimenti tramite la vendita degli NFT (Non-Fungible Token) è straordinaria: voi investite in un bene digitale unico, che acquisisce valore con il successo del progetto, e al tempo stesso sostenete direttamente un'opera d'arte grandiosa. 🚀</p>
 
-        <h3 data-key="section_value_growth">La Proprietà Digitale e l'Aumento di Valore: L'Esclusività delle Prime Edizioni 💎</h3>
-        <p data-key="value_growth_para1">Immaginate quale valore avrebbe oggi una collezione di figurine che fosse stata stampata nell'epoca del debutto della TRAVIATA. Probabilmente avrebbe un valore di centinaia di migliaia di euro se fosse ancora presente nelle mani di qualche collezionista. È ovvio che il valore iconico della collezione sarebbe cresciuto in misura direttamente proporzionale al consenso di critica e di pubblico. È altrementa ovvio che la collezione avrebbe oggi un maggiore valore, in funzione del successo registrato in tutto il mondo, e sarebbe negoziabile in tutto il mondo come gadget di valore storico. Infine, pensate a quanto potrebbe valere la prima collezione autografata dall'autore. 🖋️</p>
-        <p data-key="value_growth_para2">Ebbene, questa idoneità alla valorizzazione è fatta propria e garantita anche dalla collezione digitale creata per sostenere la realizzazione dell'opera musical Big Brother. Le immagini NFT, generate dallo smart contract, possono essere firmate digitalmente dall'autore dei testi e delle musiche, o anche dagli artisti lirici, corpo di ballo e musicisti che partecipano alla Prima rappresentazione, o alle successive. Queste figurine NFT varrebbero più delle altre sul mercato. Quindi gli NFT hanno la vocazione ad accrescere il proprio valore nel tempo. 📈 **Ecco perché è importante acquistare il maggior numero possibile di NFT della prima edizione, che oggi il Team offre al Mercato, vanno acquistate per esserne i primi possessori collezionisti.**</p>
+            <h3 data-key="section_smart_contract" id="section_smart_contract">Lo Smart Contract: Il Cuore Tecnologico della Produzione 🛡️</h3>
+            <p data-key="smart_contract_para1">Il cuore pulsante di questa iniziativa: lo Smart Contract "Big Brother The Musical", la nostra "Zecca Digitale". È con immenso orgoglio che io, in qualità di presentatore, evidenzio la sua paternità: l'autore e regista di questo capolavoro di codice è l'**Avvocato Marcello Stanca di Firenze** <a href="https://github.com/avvstancamarcello" target="_blank">@AvvMarcelloStanca</a>. Egli ha concepito e realizzato uno Smart Contract che è stato verificato e accettato dalla rete Blockchain, una garanzia di affidabilità e trasparenza in un mondo in continua evoluzione.</p>
+            <p data-key="smart_contract_para2">Ho assistito in prima persona alla genesi di questo Smart Contract e posso testimoniare che è un'opera **complessa e articolata, ma al tempo stesso incredibilmente robusta e resistente agli attacchi informatici di malware o virus**. Il lavoro necessario all'Avvocato Stanca è stato pionieristico; egli ha affrontato la costruzione dello Smart Contract come un **corpus unico, efficace ed autosufficiente**.</p>
+            <p data-key="smart_contract_para3">L'implementazione delle sue funzioni di sicurezza non è stata una mera formalità. La profonda interazione tra il frontend che vedete, l'Interplanetary File System (IPFS) che custodisce i nostri preziosi asset digitali, e la compatibilità impeccabile con le logiche degli operatori del mercato digitale – da giganti come **MetaMask e Coinbase Wallet** alle piattaforme di offerta come **OpenSea** – ha comportato il superamento di fasi estremamente critiche. La necessità di elaborare numerose versioni della struttura, delle librerie e delle dipendenze è stata una sfida ardua, ma superata con maestria, garantendo un'interoperabilità fluida e sicura. 💪</p>
 
-        <h3 data-key="section_team">Il Team d'Eccellenza: Garanzia di Affidabilità 🌟</h3>
-        <p data-key="team_para1">L'affidabilità di questo progetto, sia per gli utenti che per il mercato finanziario, è garantita da un Team di gestione eccezionale: 🤝</p>
-        <ul>
-            <li data-key="team_member1">L'**Avvocato Marcello Stanca di Firenze** <a href="https://github.com/avvstancamarcello" target="_blank">@AvvMarcelloStanca</a>, il visionario autore dello Smart Contract che è la nostra "Zecca Digitale".</li>
-            <li data-key="team_member2">Il **Maestro compositore e Direttore d'orchestra, Stefano Burbi** @MaestroBurbi, genio creativo dietro la musica e il libretto.</li>
-            <li data-key="team_member3">Il **produttore esecutivo di notorietà internazionale, Fabrizio Carbon** @FabrizioCarbon, la cui esperienza garantisce l'eccellenza nella realizzazione dell'opera.</li>
-        </ul>
+            <h3 data-key="section_blockchain_security" id="section_blockchain_security">La Tracciabilità su Blockchain: Trasparenza e Sicurezza 🌍</h3>
+            <p data-key="blockchain_security_para1">Ogni singola transazione è tracciabile e immediatamente registrata su una rete blockchain mondiale. Questo è possibile grazie a un registro distribuito su numerosi nodi in cloud, indipendenti e, soprattutto, **non alterabili**. Questo sistema di registrazione consente alla rete Ethereum-Polygon di valorizzare ed esaltare in tempo reale la crescita degli investimenti e di ogni transazione legata al contratto.</p>
+            <p data-key="blockchain_security_para2">Un punto cruciale per voi, sponsor e investitori: la proprietà di ogni NFT acquistato dagli utenti **rimane permanentemente nel wallet del proprietario**. Ogni trasferimento di proprietà degli NFT, anche del valore minimo, è immediatamente e indelebilmente registrato, garantendo una trasparenza senza precedenti e una certezza del diritto che nessun sistema tradizionale può eguagliare. 🔒</p>
 
-        <h3 data-key="section_art_collecting">L'Arte e il Collezionismo Digitale: NFT Iconici 🖼️</h3>
-        <p data-key="art_collecting_para1">Abbiamo dedicato un raffinato lavoro alla composizione grafica degli NFT. L'obiettivo è proporre **NFT originali ed accattivanti**, capaci di stimolare l'istinto del singolo collezionista ad acquistare l'intera "collezione". Vogliamo che queste "Monete" NFT possano essere oggetto di scambio a basso livello, che possano distinguersi per la loro intrinseca "bellezza" rappresentativa degli autori, e che diventino un simbolo iconico, un oggetto di scambio quasi come le gloriose, immortali ed indimenticabili "figurine Panini".</p>
+            <h3 data-key="section_value_growth" id="section_value_growth">La Proprietà Digitale e l'Aumento di Valore: L'Esclusività delle Prime Edizioni 💎</h3>
+            <p data-key="value_growth_para1">Immaginate quale valore avrebbe oggi una collezione di figurine che fosse stata stampata nell'epoca del debutto della TRAVIATA. Probabilmente avrebbe un valore di centinaia di migliaia di euro se fosse ancora presente nelle mani di qualche collezionista. È ovvio che il valore iconico della collezione sarebbe cresciuto in misura direttamente proporzionale al consenso di critica e di pubblico. È altrementa ovvio che la collezione avrebbe oggi un maggiore valore, in funzione del successo registrato in tutto il mondo, e sarebbe negoziabile in tutto il mondo come gadget di valore storico. Infine, pensate a quanto potrebbe valere la prima collezione autografata dall'autore. 🖋️</p>
+            <p data-key="value_growth_para2">Ebbene, questa idoneità alla valorizzazione è fatta propria e garantita anche dalla collezione digitale creata per sostenere la realizzazione dell'opera musical Big Brother. Le immagini NFT, generate dallo smart contract, possono essere firmate digitalmente dall'autore dei testi e delle musiche, o anche dagli artisti lirici, corpo di ballo e musicisti che partecipano alla Prima rappresentazione, o alle successive. Queste figurine NFT varrebbero più delle altre sul mercato. Quindi gli NFT hanno la vocazione ad accrescere il proprio valore nel tempo. 📈 **Ecco perché è importante acquistare il maggior numero possibile di NFT della prima edizione, che oggi il Team offre al Mercato, vanno acquistate per esserne i primi possessori collezionisti.**</p>
 
-        <h3 data-key="section_protection_dynamics">Protezione e Dinamicità: Filigrana e Nuove Collezioni ⚙️</h3>
-        <p data-key="protection_dynamics_para1">E per salvaguardare il valore degli investitori e degli autori, **l'Avvocato Stanca ha predisposto un sistema di filigrana elettronica invisibile**, invocabile su qualsiasi moneta-immagine in circolazione. Questo script auto-responsivo, protetto da password, consente al progettista dello Smart Contract e del frontend l'immediata squalifica di immagini clone che potrebbero essere create contro il diritto di copyright. Inoltre, lo Smart Contract permette all'autore di inserire nuove collezioni in qualsiasi momento, per valorizzare il patrimonio dei collezionisti con contenuti di rarità, rendendo l'investimento sempre dinamico e potenziale. 🚀</p>
+            <h3 data-key="section_team" id="section_team">Il Team d'Eccellenza: Garanzia di Affidabilità 🌟</h3>
+            <p data-key="team_para1">L'affidabilità di questo progetto, sia per gli utenti che per il mercato finanziario, è garantita da un Team di gestione eccezionale: 🤝</p>
+            <ul>
+                <li data-key="team_member1">L'**Avvocato Marcello Stanca di Firenze** <a href="https://github.com/avvstancamarcello" target="_blank">@AvvMarcelloStanca</a>, il visionario autore dello Smart Contract che è la nostra "Zecca Digitale".</li>
+                <li data-key="team_member2">Il **Maestro compositore e Direttore d'orchestra, Stefano Burbi** @MaestroBurbi, genio creativo dietro la musica e il libretto.</li>
+                <li data-key="team_member3">Il **produttore esecutivo di notorietà internazionale, Fabrizio Carbon** @FabrizioCarbon, la cui esperienza garantisce l'eccellenza nella realizzazione dell'opera.</li>
+            </ul>
 
-        <h2 data-key="call_to_action_title">Invito all'Investimento e Qualità del Progetto 🚀</h2>
-        <p data-key="call_to_action_para1">In sintesi, "Big Brother The Musical" non è solo un'opera d'arte da finanziare; è un investimento in un'innovazione che crea valore tangibile e immortale nel panorama digitale. #BigBrotherTheMusical #NFTArt #DeFi #CrowdfundingArt #Blockchain #InvestInArt #DigitalCollectibles</p>
+            <h3 data-key="section_art_collecting" id="section_art_collecting">L'Arte e il Collezionismo Digitale: NFT Iconici 🖼️</h3>
+            <p data-key="art_collecting_para1">Abbiamo dedicato un raffinato lavoro alla composizione grafica degli NFT. L'obiettivo è proporre **NFT originali ed accattivanti**, capaci di stimolare l'istinto del singolo collezionista ad acquistare l'intera "collezione". Vogliamo che queste "Monete" NFT possano essere oggetto di scambio a basso livello, che possano distinguersi per la loro intrinseca "bellezza" rappresentativa degli autori, e che diventino un simbolo iconico, un oggetto di scambio quasi come le gloriose, immortali ed indimenticabili "figurine Panini".</p>
 
-        <h3 data-key="section_project_qualities">Elenco delle Qualità del Progetto:</h3>
-        <ul>
-            <li data-key="quality1">**Innovazione Finanziaria:** Progetto di crowdfunding digitalizzato tramite Blockchain, che offre un modello di finanziamento trasparente e diretto.</li>
-            <li data-key="quality2">**Affidabilità Code-Base:** Smart Contract complesso, robusto e resistente agli attacchi informatici, scritto e registrato su rete blockchain.</li>
-            <li data-key="quality3">**Immutabilità e Tracciabilità:** Ogni transazione di acquisto o di vendita di NFT è immediatamente e pubblicamente registrata sul registro distribuito (la "Zecca Digitale" del contratto), garantendo la massima trasparenza.</li>
-            <li data-key="quality4">**Proprietà Sicura:** L'NFT rimane di proprietà dell'acquirente nel suo wallet, con ogni trasferimento immediatamente registrato sulla blockchain.</li>
-            <li data-key="quality5">**Team d'Eccellenza:** Composto dall'Avv. Marcello Stanca (Autore Smart Contract), dal M° Stefano Burbi (Compositore e Direttore d'orchestra), e da Fabrizio Carbon (Produttore Esecutivo di fama internazionale).</li>
-            <li data-key="quality6">**Valore Artistico e Collezionabile:** NFT graficamente raffinati, concepiti per essere oggetti d'arte e da collezione, con potenziale di acquisire status iconico ("Figurine Panini" del futuro).</li>
-            <li data-key="quality7">**Dinamicità del Valore:** Possibilità futura di introdurre nuove collezioni con contenuti di rarità, valorizzando ulteriormente il patrimonio dei collezionisti.</li>
-            <li data-key="quality8">**Protezione del Copyright:** Sistema di filigrana elettronica invisibile e meccanismo di squalifica per contrastare le violazioni del copyright.</li>
-        </ul>
-        <p data-key="call_to_action_final_para" style="text-align: center;">Investire in "Big Brother The Musical" significa sostenere l'arte, innovare la finanza e possedere un pezzo di storia digitale. Unisciti a noi! ✨</p>
-        <div class="social-icons">
-            <span data-key="share_text">Condividi:</span>
-            <a href="https://twitter.com/intent/tweet?text=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!%20Unisciti%20a%20noi%20per%20sostenere%20l'arte%20e%20investire%20nel%20futuro%20%23BigBrotherTheMusical%20%23NFTArt%20%23DeFi%20%40AvvMarcelloStanca" target="_blank" title="Condividi su X/Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://your-project-url.com&quote=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!" target="_blank" title="Condividi su Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://your-project-url.com&title=Big%20Brother%20The%20Musical%20-%20NFT%20Crowdfunding&summary=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!" target="_blank" title="Condividi su LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <h3 data-key="section_protection_dynamics" id="section_protection_dynamics">Protezione e Dinamicità: Filigrana e Nuove Collezioni ⚙️</h3>
+            <p data-key="protection_dynamics_para1">E per salvaguardare il valore degli investitori e degli autori, **l'Avvocato Stanca ha predisposto un sistema di filigrana elettronica invisibile**, invocabile su qualsiasi moneta-immagine in circolazione. Questo script auto-responsivo, protetto da password, consente al progettista dello Smart Contract e del frontend l'immediata squalifica di immagini clone che potrebbero essere create contro il diritto di copyright. Inoltre, lo Smart Contract permette all'autore di inserire nuove collezioni in qualsiasi momento, per valorizzare il patrimonio dei collezionisti con contenuti di rarità, rendendo l'investimento sempre dinamico e potenziale. 🚀</p>
+
+            <h2 data-key="call_to_action_title" id="call_to_action_title">Invito all'Investimento e Qualità del Progetto 🚀</h2>
+            <p data-key="call_to_action_para1">In sintesi, "Big Brother The Musical" non è solo un'opera d'arte da finanziare; è un investimento in un'innovazione che crea valore tangibile e immortale nel panorama digitale. #BigBrotherTheMusical #NFTArt #DeFi #CrowdfundingArt #Blockchain #InvestInArt #DigitalCollectibles</p>
+
+            <h3 data-key="section_project_qualities" id="section_project_qualities">Elenco delle Qualità del Progetto:</h3>
+            <ul>
+                <li data-key="quality1">**Innovazione Finanziaria:** Progetto di crowdfunding digitalizzato tramite Blockchain, che offre un modello di finanziamento trasparente e diretto.</li>
+                <li data-key="quality2">**Affidabilità Code-Base:** Smart Contract complesso, robusto e resistente agli attacchi informatici, scritto e registrato su rete blockchain.</li>
+                <li data-key="quality3">**Immutabilità e Tracciabilità:** Ogni transazione di acquisto o di vendita di NFT è immediatamente e pubblicamente registrata sul registro distribuito (la "Zecca Digitale" del contratto), garantendo la massima trasparenza.</li>
+                <li data-key="quality4">**Proprietà Sicura:** L'NFT rimane di proprietà dell'acquirente nel suo wallet, con ogni trasferimento immediatamente registrato sulla blockchain.</li>
+                <li data-key="quality5">**Team d'Eccellenza:** Composto dall'Avv. Marcello Stanca (Autore Smart Contract), dal M° Stefano Burbi (Compositore e Direttore d'orchestra), e da Fabrizio Carbon (Produttore Esecutivo di fama internazionale).</li>
+                <li data-key="quality6">**Valore Artistico e Collezionabile:** NFT graficamente raffinati, concepiti per essere oggetti d'arte e da collezione, con potenziale di acquisire status iconico ("Figurine Panini" del futuro).</li>
+                <li data-key="quality7">**Dinamicità del Valore:** Possibilità futura di introdurre nuove collezioni con contenuti di rarità, valorizzando ulteriormente il patrimonio dei collezionisti.</li>
+                <li data-key="quality8">**Protezione del Copyright:** Sistema di filigrana elettronica invisibile e meccanismo di squalifica per contrastare le violazioni del copyright.</li>
+            </ul>
+            <p data-key="call_to_action_final_para" style="text-align: center;">Investire in "Big Brother The Musical" significa sostenere l'arte, innovare la finanza e possedere un pezzo di storia digitale. Unisciti a noi! ✨</p>
+            <div class="social-icons">
+                <span data-key="share_text">Condividi:</span>
+                <a href="https://twitter.com/intent/tweet?text=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!%20Unisciti%20a%20noi%20per%20sostenere%20l'arte%20e%20investire%20nel%20futuro%20%23BigBrotherTheMusical%20%23NFTArt%20%23DeFi%20%40AvvMarcelloStanca" target="_blank" title="Condividi su X/Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://your-project-url.com&quote=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!" target="_blank" title="Condividi su Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://your-project-url.com&title=Big%20Brother%20The%20Musical%20-%20NFT%20Crowdfunding&summary=Scopri%20il%20progetto%20NFT%20%22Big%20Brother%20The%20Musical%22%20finanziato%20su%20blockchain!" target="_blank" title="Condividi su LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
-    </div>
+    </main>
 
     <div class="footer">
         <p data-key="footer_text">Powered by Big Brother The Musical - Smart Contract by Avv. Marcello Stanca © Giugno 2025</p>
@@ -308,7 +310,7 @@
             imageCard.className = 'image-card';
             
             imageCard.innerHTML = `
-                <img src="${imageUrl}" alt="BBTM NFT Image ${suffix}" onclick="openFullscreen('${imageUrl}')">
+                <img src="${imageUrl}" alt="BBTM NFT Image ${suffix}" onclick="openFullscreen('${imageUrl}')" tabindex="0">
                 <p>Immagine: ${fileName}</p>
                 <div class="ipfs-link">
                     <a href="${imageUrl}" target="_blank">Visualizza su IPFS</a>

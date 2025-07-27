@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="page_title">Big Brother The Musical - Collezione Immagini NFT</title>
+    <title data-key="page_title">BIG BROTHER The Musical - Collezione Immagini NFT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -13,22 +13,22 @@
             margin: 20px;
             text-align: center;
             line-height: 1.6;
-            font-size: 16px; /* Aumentato base font size a 16px per maggiore leggibilità */
+            font-size: 16px; /* Base font size, approx Arial 12pt */
         }
         h1 {
             color: #4CAF50;
-            font-size: 2.2em; /* Relativo a body font-size, quindi 2.2 * 16px */
+            font-size: 2.2em; /* Relative to body font-size */
             margin-bottom: 10px;
         }
         h2 {
             color: #2e7d32;
-            font-size: 1.8em; /* Relativo a body font-size */
+            font-size: 1.8em; /* Relative to body font-size */
             margin-top: 40px;
             margin-bottom: 15px;
         }
         h3 {
             color: #1b5e20;
-            font-size: 1.4em; /* Relativo a body font-size */
+            font-size: 1.4em; /* Relative to body font-size */
             margin-top: 30px;
             margin-bottom: 10px;
             text-align: left;
@@ -36,7 +36,7 @@
         p {
             text-align: justify;
             margin-bottom: 10px;
-            font-size: 1em; /* Eredita 16px da body, quindi circa Arial 12pt */
+            font-size: 1em; /* Eredita 16px da body */
         }
         ul {
             text-align: left;
@@ -47,17 +47,23 @@
         li {
             margin-bottom: 5px;
         }
-        .intro-text {
-            max-width: 900px;
+        .intro-text, .content-section {
+            max-width: 900px; /* Consolidato per coerenza */
             margin: 20px auto;
             padding: 20px;
-            background-color: #e8f5e9;
+            background-color: #fff; /* Aggiunto background per intro-text se diverso */
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            font-size: 1.1em; /* Leggermente più grande del testo base */
+            font-size: 1.1em;
             font-style: italic;
             color: #1b5e20;
             text-align: center;
+        }
+        .content-section {
+            background-color: #fff; /* Assicurati che content-section sia bianco */
+            font-style: normal; /* Reimposta per il contenuto principale */
+            color: #333; /* Reimposta il colore per il contenuto principale */
+            text-align: left;
         }
         .image-grid {
             display: grid;
@@ -108,24 +114,6 @@
         a:hover {
             text-decoration: underline;
         }
-        .content-section {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-align: left;
-        }
-        .social-icons {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #555;
-            text-align: center;
-        }
-        .social-icons i {
-            margin: 0 8px;
-        }
         .footer {
             margin-top: 50px;
             padding-top: 20px;
@@ -158,6 +146,65 @@
             margin-top: -20px;
             margin-bottom: 10px;
             font-weight: bold;
+        }
+
+        /* --- Media Queries per la Responsività --- */
+        @media (max-width: 768px) { /* Per tablet e schermi più piccoli */
+            body {
+                margin: 10px;
+                font-size: 15px; /* Riduci leggermente la base font size */
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .intro-text, .content-section {
+                padding: 15px;
+                margin: 15px auto;
+                max-width: 100%; /* Permetti che occupi più spazio su schermi piccoli */
+            }
+            .image-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Riduci la dimensione minima delle card */
+                gap: 15px;
+                padding: 15px;
+            }
+            .image-card {
+                padding: 10px;
+            }
+            .lang-switcher {
+                text-align: center; /* Centra il pulsante lingua */
+            }
+        }
+
+        @media (max-width: 480px) { /* Per smartphone */
+            body {
+                font-size: 14px; /* Riduci ulteriormente la base font size */
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .image-grid {
+                grid-template-columns: 1fr; /* Una sola colonna su smartphone */
+                gap: 10px;
+                padding: 10px;
+            }
+            .image-card img {
+                max-width: 80%; /* Le immagini potrebbero essere troppo grandi in colonna singola */
+            }
+            .image-instruction {
+                font-size: 1em; /* Riduci la dimensione dell'istruzione */
+            }
         }
     </style>
 </head>
@@ -223,7 +270,7 @@
         <ul>
             <li data-key="quality1">**Innovazione Finanziaria:** Progetto di crowdfunding digitalizzato tramite Blockchain, che offre un modello di finanziamento trasparente e diretto.</li>
             <li data-key="quality2">**Affidabilità Code-Base:** Smart Contract complesso, robusto e resistente agli attacchi informatici, scritto e registrato su rete blockchain.</li>
-            <li data-key="quality3">**Immutabilità e Tracciabilità:** Ogni transazione di acquisto o vendita di NFT è immediatamente e pubblicamente registrata sul registro distribuito (la "Zecca Digitale" del contratto), garantendo la massima trasparenza.</li>
+            <li data-key="quality3">**Immutabilità e Tracciabilità:** Ogni transazione di acquisto o di vendita di NFT è immediatamente e pubblicamente registrata sul registro distribuito (la "Zecca Digitale" del contratto), garantendo la massima trasparenza.</li>
             <li data-key="quality4">**Proprietà Sicura:** L'NFT rimane di proprietà dell'acquirente nel suo wallet, con ogni trasferimento immediatamente registrato sulla blockchain.</li>
             <li data-key="quality5">**Team d'Eccellenza:** Composto dall'Avv. Marcello Stanca (Autore Smart Contract), dal M° Stefano Burbi (Compositore e Direttore d'orchestra), e da Fabrizio Carbon (Produttore Esecutivo di fama internazionale).</li>
             <li data-key="quality6">**Valore Artistico e Collezionabile:** NFT graficamente raffinati, concepiti per essere oggetti d'arte e da collezione, con potenziale di acquisire status iconico ("Figurine Panini" del futuro).</li>

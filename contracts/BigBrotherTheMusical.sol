@@ -40,7 +40,7 @@ contract BigBrotherTheMusical is ERC1155URIStorage, Ownable, Pausable, Reentranc
     address public creatorWallet;
     uint256 public creatorSharePercentage;
     uint96 public defaultRoyaltyFeeNumerator; // Aggiunto per tracciare il valore numeratore royalty di default
-    string public baseURI; // Questa sarà la baseURI della cartella principale per i metadati JSON (es. ipfs://bafybeicrgxjcqb7h6gj7qkceyxshalzc6ra4gu6kzrwjcq2ttg6yl4vmhq/)
+    string public baseURI; // Questa sarà la baseURI della cartella principale per i metadati JSON
 
     // --- Whitelist ---
     bool public whitelistActive = false;

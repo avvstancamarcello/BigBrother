@@ -1,25 +1,29 @@
 // scripts/deploy_bbtm_contract.js
 // Questo è uno script JavaScript, Hardhat userà hardhat.config.js per la compilazione e il deploy.
 
-const hre = require("hardhat");
+// NON importare 'hre' direttamente con require("hardhat");
+// Hardhat inietta automaticamente l'ambiente runtime (hre) e le sue proprietà globali.
+// Accediamo direttamente a 'ethers' da hardhat.
+const { ethers } = require("hardhat"); // CORRETTO: Accede a 'ethers' globalmente dall'ambiente Hardhat
 
 async function main() {
     // La regola del Filo di Arianna: Verifica delle credenziali e dello stato
     console.log("--- LA REGOLA DEL FILO DI ARIANNA: INIZIO DEPLOY ---");
     console.log("Verifico le credenziali e il saldo del deployer...");
 
-    const [deployer] = await hre.ethers.getSigners();
+    // USO CORRETTO DI ETHERS: Chiamate direttamente su 'ethers'
+    const [deployer] = await ethers.getSigners(); // Corretto
 
     if (!deployer) {
         console.error("ERRORE: Deployer account non trovato. Assicurati che PRIVATE_KEY sia configurata nel tuo .env");
         process.exit(1);
     }
 
-    const deployerBalance = await hre.ethers.provider.getBalance(deployer.address);
+    const deployerBalance = await ethers.provider.getBalance(deployer.address); // Corretto
     console.log("Account Deployer (firmatario della transazione):", deployer.address);
-    console.log("Saldo del Deployer:", hre.ethers.utils.formatEther(deployerBalance), "MATIC");
+    console.log("Saldo del Deployer:", ethers.utils.formatEther(deployerBalance), "MATIC"); // Corretto
 
-    if (deployerBalance.lt(hre.ethers.utils.parseEther("0.1"))) { // Controlla se il saldo è inferiore a 0.1 MATIC
+    if (deployerBalance.lt(ethers.utils.parseEther("0.1"))) { // Corretto
         console.warn("ATTENZIONE: Saldo MATIC del deployer potenzialmente insufficiente per il deploy e le transazioni future. Considera di aggiungere più fondi.");
     }
 
@@ -27,13 +31,13 @@ async function main() {
 
     // RECUPERA LA FACTORY DEL CONTRATTO
     // La Regola del Filo di Arianna: Assicurati di puntare al contratto corretto.
-    const ContractFactory = await hre.ethers.getContractFactory(CONTRACT_NAME);
+    const ContractFactory = await ethers.getContractFactory(CONTRACT_NAME); // Corretto
 
     // --- PARAMETRI PER IL COSTRUTTORE DEL CONTRATTO BBTM ---
     // La Regola del Filo di Arianna: La baseURI deve essere precisa e non ambigua.
-    const baseURI = "ipfs://bafybeicrgxjcqb7h6gj7qkceyxshalzc6ra4gu6kzrwjcq2ttg6yl4vmhq/"; 
-    const ownerAddress = deployer.address; // L'account che deploya diventa l'owner
-    const creatorWalletAddress = "0xf18c4cC01F72b50B389252e4d84AA376649Eb347"; // L'indirizzo del tuo creator (sostituisci se diverso)
+    const baseURI = "ipfs://bafybeickfxxa5nmkt3afvbohnfuaodylzbt4c4ei5yf2ht3kf5mb5i7iye/"; // CID FINALE DEI METADATI JSON
+    const ownerAddress = "0x83114bA5262CD62AF6E7d619035d20bfaF33Eaa5"; // L'account che deploya diventa l'owner
+    const creatorWalletAddress = "0x83114bA5262CD62AF6E7d619035d20bfaF33Eaa5"; // L'indirizzo del tuo creator
 
     console.log("Base URI configurato per i metadati NFT:", baseURI);
     console.log("Owner del Contratto:", ownerAddress);
@@ -57,4 +61,3 @@ main().catch((error) => {
     console.error("❌ ERRORE DURANTE IL TELETRASPORTO DEL CONTRATTO:", error);
     process.exitCode = 1;
 });
-

@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="theme-color" content="#4CAF50">
     <!-- ethers.js e abi.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.umd.min.js"></script>
     <script src="abi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.umd.min.js"></script>
+    <script src="main.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -329,11 +330,19 @@
             alert('Per favore installa Metamask per mintare NFT.');
             return;
         }
+        
         const contractAddress = '0xbBf8573736e6D1f20a26d2F0B8319C8021B015D1';
+
+        // ✅ Controllo corretto prima del log
         if (typeof contractABI === 'undefined') {
-            alert('ABI non caricata! Verifica che il file abi.js sia presente.');
-            return;
+             alert('ABI non caricata! Verifica che il file abi.js sia presente.');
+             return;
         }
+
+        // ✅ Ora è sicuro loggare                 
+        console.log("ABI disponibile?", typeof contractABI, contractABI);
+        
+
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];

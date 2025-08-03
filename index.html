@@ -213,6 +213,176 @@
             }
             .image-card img { max-width: 80%; }
             .image-instruction { font-size: 1em; }
+            .token-table { font-size: 0.8em; }
+            .token-table th, .token-table td { padding: 4px; }
+        }
+
+        /* Stili per la tabella valori token */
+        .euro-price-control {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #c8e6c9;
+        }
+        .euro-price-control label {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-right: 10px;
+        }
+        .euro-price-control input {
+            padding: 5px 10px;
+            border: 1px solid #c8e6c9;
+            border-radius: 4px;
+            margin: 0 10px;
+            width: 100px;
+        }
+        .euro-price-control button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .euro-price-control button:hover {
+            background-color: #388e3c;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        .token-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .token-table th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .token-table td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .token-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .token-table tr:hover {
+            background-color: #e8f5e9;
+        }
+
+        /* Stili per il sistema di commenti */
+        .comment-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+        }
+        .rating-section {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .rating-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .star-rating {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .star {
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+            margin: 0 2px;
+        }
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+        }
+        #rating-display {
+            display: block;
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        .comment-input-section {
+            margin-top: 20px;
+        }
+        .comment-input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .comment-input-section textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c8e6c9;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .comment-input-section button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .comment-input-section button:hover {
+            background-color: #388e3c;
+        }
+        .comments-display {
+            margin-top: 30px;
+        }
+        .comments-display h3 {
+            color: #2e7d32;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+        #comments-list {
+            margin-top: 15px;
+        }
+        .comment-item {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .comment-rating {
+            color: #ffd700;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .comment-text {
+            color: #333;
+            line-height: 1.5;
+        }
+        .comment-timestamp {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -236,6 +406,66 @@
         <div id="modal" class="modal" onclick="closeModal()" style="display:none">
             <span class="close" onclick="closeModal()">&times;</span>
             <img class="modal-content" id="modal-img">
+        </div>
+
+        <!-- Tabella valori TokenID -->
+        <div class="content-section" role="region" aria-labelledby="token_table_title">
+            <h2 data-key="token_table_title" id="token_table_title">Tabella Valori Token BBTM</h2>
+            
+            <div class="euro-price-control">
+                <label for="euro-price-input" data-key="euro_price_label">Prezzo EUR/POL:</label>
+                <input type="number" id="euro-price-input" min="0" step="0.01" value="1.00" onchange="updateEuroPrices(parseFloat(this.value))">
+                <button onclick="updateEuroPrices(parseFloat(document.getElementById('euro-price-input').value))" data-key="update_prices_btn">Aggiorna Prezzi</button>
+            </div>
+
+            <div class="table-container">
+                <table class="token-table" id="token-table">
+                    <thead>
+                        <tr>
+                            <th data-key="col_token_id">Token ID</th>
+                            <th data-key="col_bbtm_value">Valore BBTM</th>
+                            <th data-key="col_pol_value">Valore POL</th>
+                            <th data-key="col_euro_value">Prezzo EUR</th>
+                            <th data-key="col_wei_value">Valore WEI</th>
+                        </tr>
+                    </thead>
+                    <tbody id="token-table-body">
+                        <!-- Token rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sistema di commenti e valutazioni -->
+        <div class="content-section" role="region" aria-labelledby="comment_section_title">
+            <h2 data-key="comment_section_title" id="comment_section_title">Lascia un Commento</h2>
+            
+            <div class="comment-form">
+                <div class="rating-section">
+                    <label data-key="rating_label">Valutazione (opzionale):</label>
+                    <div class="star-rating" id="star-rating">
+                        <span class="star" data-rating="1">☆</span>
+                        <span class="star" data-rating="2">☆</span>
+                        <span class="star" data-rating="3">☆</span>
+                        <span class="star" data-rating="4">☆</span>
+                        <span class="star" data-rating="5">☆</span>
+                    </div>
+                    <span id="rating-display" data-key="no_rating">Nessuna valutazione</span>
+                </div>
+                
+                <div class="comment-input-section">
+                    <label for="comment-text" data-key="comment_label">Commento anonimo:</label>
+                    <textarea id="comment-text" rows="4" placeholder="Scrivi il tuo commento qui..." data-key="comment_placeholder"></textarea>
+                    <button onclick="submitComment()" data-key="submit_comment_btn">Invia Commento</button>
+                </div>
+            </div>
+
+            <div class="comments-display" id="comments-display">
+                <h3 data-key="comments_title">Commenti della Community</h3>
+                <div id="comments-list">
+                    <!-- Comments will be displayed here -->
+                </div>
+            </div>
         </div>
 
         <div class="content-section" role="region" aria-labelledby="official_presentation_title">
@@ -368,6 +598,21 @@
             intro_para1: "Observe these images. This is not just an image gallery, but something truly innovative! It's a gallery of <b>digital values</b>, original artworks representing an ambitious creative project.",
             intro_para2: "Let me explain 👇",
             image_instruction_text: "Show image fullscreen by clicking any image",
+            token_table_title: "BBTM Token Values Table",
+            euro_price_label: "EUR/POL Price:",
+            update_prices_btn: "Update Prices",
+            col_token_id: "Token ID",
+            col_bbtm_value: "BBTM Value",
+            col_pol_value: "POL Value",
+            col_euro_value: "EUR Price",
+            col_wei_value: "WEI Value",
+            comment_section_title: "Leave a Comment",
+            rating_label: "Rating (optional):",
+            no_rating: "No rating",
+            comment_label: "Anonymous comment:",
+            comment_placeholder: "Write your comment here...",
+            submit_comment_btn: "Submit Comment",
+            comments_title: "Community Comments",
             official_presentation_title: "Official Presentation: \"Big Brother The Musical\" – The Ultimate Work Funded by Blockchain 🎉",
             section_intro_project: "Introduction to the Project 🎭",
             intro_project_para1: "I am here to present a project that transcends the boundaries of art and technology...",

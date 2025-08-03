@@ -337,9 +337,9 @@
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
-            const provider = new window.ethers.providers.Web3Provider(window.ethereum);
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
-            const contract = new window.ethers.Contract(contractAddress, contractABI, signer);
+            const contract = new ethers.Contract(contractAddress, contractABI, signer);
             // Personalizzare secondo la funzione del tuo smart contract
             const tx = await contract.mintNFT(account, imageName);
             await tx.wait();

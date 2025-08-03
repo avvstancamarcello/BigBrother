@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="page_title">Big Brother The Musical - Artistic Project - Collezione Immagini NFT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="theme-color" content="#4CAF50">
+    <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 20px;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2e7d32;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            color: #1b5e20;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        ul {
+            text-align: left;
+            list-style-position: inside;
+            padding-left: 20px;
+            font-size: 1em;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .intro-text, .content-section {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 1.1em;
+            font-style: italic;
+            color: #1b5e20;
+            text-align: center;
+        }
+        .content-section {
+            background-color: #fff;
+            font-style: normal;
+            color: #333;
+            text-align: left;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .image-card {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .image-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border: 2px solid #81c784;
+            cursor: pointer;
+        }
+        .image-card p {
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 5px 0 0;
+            font-size: 1em;
+        }
+        .mint-btn {
+            margin-top: 8px;
+            padding: 7px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .mint-btn:hover, .mint-btn:focus {
+            background-color: #388e3c;
+        }
+        .ipfs-link {
+            font-size: 0.85em;
+            color: #555;
+            word-break: break-all;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.8em;
+            color: #777;
+            text-align: center;
+        }
+        .lang-switcher {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        .lang-button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            touch-action: manipulation;
+        }
+        .lang-button:hover {
+            background-color: #0056b3;
+        }
+        .image-instruction {
+            color: green;
+            font-family: Arial, sans-serif;
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .privacy-policy-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+            border: 1px solid #eee;
+        }
+        .privacy-policy-section h2, .privacy-policy-section h3 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .privacy-policy-section p {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .privacy-policy-section ul {
+            font-size: 0.95em;
+        }
+        .security-recommendation-note {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            color: #856404;
+            text-align: justify;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .security-recommendation-note h3 {
+            color: #856404;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+        }
+        .close {
+            position: absolute;
+            top: 20px; right: 32px;
+            color: #fff;
+            font-size: 2.5em;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 101;
+        }
+        @media (max-width: 600px) {
+            .modal-content { max-width: 98vw; max-height: 70vh; }
+            .close { right: 16px; top: 8px; }
+        }
+        @media (max-width: 768px) {
+            body {
+                margin: 10px;
+                font-size: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .intro-text, .content-section, .security-recommendation-note, .privacy-policy-section {
+                padding: 15px;
+                margin: 15px auto;
+                max-width: 100%;
+            }
+            .image-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+            .image-card {
+                padding: 10px;
+            }
+            .lang-switcher {
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 10px;
+            }
+            .image-card img {
+                max-width: 80%;
+            }
+            .image-instruction {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <button class="lang-button" id="toggleLangButton" onclick="switchLanguage()" aria-live="polite" aria-label="Cambia lingua">Traduci e leggi in lingua inglese</button>
+    </div>
+
+    <main role="main">
+        <h1 data-key="main_page_title" id="main_page_title">Collezione NFT "Big Brother The Musical"</h1>
+        <h2 data-key="main_subtitle" id="main_subtitle">Crowdfunding artistico musicale.<br>Presentazione alla stampa</h2>
+        <div class="intro-text" role="region" aria-labelledby="main_page_title">
+            <p data-key="intro_para1">Osservate queste immagini. Quella che vedete non è una semplice galleria di immagini, ma qualcosa di veramente innovativo! ✨ È una galleria di <b>valori digitali</b>, opere d'arte originali, rappresentative di un progetto creativo ambizioso, tutelato da copyright...</p>
+            <p data-key="intro_para2">Vi spiego con ordine 👇</p>
+        </div>
+        <p data-key="image_instruction_text" class="image-instruction" id="image_instruction">Mostra immagine a schermo intero con un click su qualsiasi immagine</p>
+
+        <div class="image-grid" id="image-container" role="region" aria-labelledby="image_instruction"></div>
+
+        <!-- Modal per visualizzazione ingrandita -->
+        <div id="modal" class="modal" onclick="closeModal()" style="display:none">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modal-img">
+        </div>
+
+        <!-- Qui va il resto del tuo contenuto: content-section, privacy policy, ecc. -->
+        <!-- ...OMESSO PER BREVI... -->
+
+    </main>
+    <div class="footer">
+        <p data-key="footer_text">Powered by Big Brother The Musical - Smart Contract by Avv. Marcello Stanca © Giugno 2025</p>
+        <p><a href="#privacy-policy" data-key="footer_privacy_link">Privacy Policy</a></p>
+    </div>
+
+    <script>
+    // ---- galleria immagini locali con accessibilità e mint ----
+    const imageNames = [
+      "5_watermarked.jpg", "10_watermarked.jpg", "15_watermarked.jpg", "20_watermarked.jpg",
+      "25_watermarked.jpg", "30_watermarked.jpg", "35_watermarked.jpg", "40_watermarked.jpg",
+      "45_watermarked.jpg", "50_watermarked.jpg", "55_watermarked.jpg", "60_watermarked.jpg",
+      "65_watermarked.jpg", "70_watermarked.jpg", "75_watermarked.jpg", "80_watermarked.jpg",
+      "85_watermarked.jpg", "90_watermarked.jpg", "95_watermarked.jpg", "100_watermarked.jpg"
+    ];
+    const imageContainer = document.getElementById('image-container');
+    imageNames.forEach(name => {
+      const imageCard = document.createElement('div');
+      imageCard.className = 'image-card';
+      imageCard.innerHTML = `
+        <img src="images-preview/${name}" alt="BBTM NFT ${name}"
+             onclick="openModal('images-preview/${name}')"
+             onkeydown="if(event.key==='Enter'||event.key===' '){openModal('images-preview/${name}')}"
+             tabindex="0">
+        <p>Immagine: ${name}</p>
+        <button class="mint-btn" onclick="mintNFT('${name}')">Mint NFT</button>
+      `;
+      imageContainer.appendChild(imageCard);
+    });
+    // Modal logic
+    function openModal(src) {
+      document.getElementById('modal').style.display = "block";
+      document.getElementById('modal-img').src = src;
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = "none";
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // --- Funzione Mint NFT ---
+    async function mintNFT(imageName) {
+        if (typeof window.ethereum === 'undefined') {
+            alert('Per favore installa Metamask per mintare NFT.');
+            return;
+        }
+        const contractAddress = 'INSERISCI_L_INDIRIZZO_DEL_TUO_CONTRACT';
+        const contractABI = [/* INSERISCI_L_ABI_DEL_CONTRACT_QUI */];
+
+        try {
+            // Richiedi connessione account
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const account = accounts[0];
+
+            // Connetti a Metamask e smart contract
+            const provider = new window.ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new window.ethers.Contract(contractAddress, contractABI, signer);
+
+            // Esempio: chiama funzione mint del contratto (modifica se necessario)
+            // Qui si assume che la funzione sia mintNFT(string imageName)
+            const tx = await contract.mintNFT(account, imageName);
+            await tx.wait();
+            alert('Mint effettuato! Transazione: ' + tx.hash);
+        } catch (err) {
+            alert('Mint fallito: ' + (err?.message || err));
+        }
+    }
+
+    // --- Traduzioni --- (lascia il resto del tuo script traduzioni qui)
+    // ...
+    </script>
+</body>
+</html>

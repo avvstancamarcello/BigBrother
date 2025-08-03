@@ -165,8 +165,8 @@ contract BigBrotherTheMusical is ERC1155URIStorage, Ownable, Pausable, Reentranc
         emit LimitToken100ActiveChanged(active); // Usiamo l'evento esistente dal contratto schema
     }
 
-    // Funzione interna per il controllo del limite (allineata con la logica del tuo LHISA_LecceNFT.sol)
-    function _checkMintLimitSpecificToken(address user, uint256 tokenId, uint256 quantity) internal returns (bool) { 
+    // Funzione interna per il controllo del limite (allineata con la logica del tuo precedente)
+    function _checkMintLimitSpecificToken(address user, uint256 /* tokenId */, uint256 quantity) internal returns (bool) {
         if (!limitSpecificTokenActive) {
             return true;
         }

@@ -384,6 +384,53 @@
             margin-top: 10px;
             font-style: italic;
         }
+
+        /* Stili per la sezione anteprima musicale */
+        .music-preview-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .music-preview-section h2 {
+            color: #4CAF50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .music-preview-section p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .video-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .music-preview-section {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            .music-preview-section h2 {
+                font-size: 1.5em;
+            }
+            .music-preview-section p {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -406,6 +453,18 @@
         <div id="modal" class="modal" onclick="closeModal()" style="display:none">
             <span class="close" onclick="closeModal()">&times;</span>
             <img class="modal-content" id="modal-img">
+        </div>
+
+        <!-- Sezione anteprima musicale -->
+        <div class="music-preview-section" role="region" aria-labelledby="music_preview_title">
+            <h2 data-key="music_preview_title" id="music_preview_title">Anteprima Musicale - Big Brother The Musical</h2>
+            <p data-key="music_preview_description" id="music_preview_description">Ascolta un'anteprima del brano musicale principale di "Big Brother The Musical", l'innovativo progetto che unisce arte teatrale e tecnologia blockchain.</p>
+            <div class="video-container">
+                <video controls preload="metadata" aria-label="Anteprima musicale Big Brother The Musical">
+                    <source src="images-preview/BBTMTheMusical.mp4" type="video/mp4">
+                    <p>Il tuo browser non supporta il tag video. <a href="images-preview/BBTMTheMusical.mp4">Scarica il video</a> per visualizzarlo.</p>
+                </video>
+            </div>
         </div>
 
         <!-- Tabella valori TokenID -->
@@ -650,7 +709,9 @@
             security_recommendation_title: "Recommendations for Viewing IPFS Content",
             security_reco_para1: "Some links point to IPFS content. Security warnings may appear from browsers or antivirus. Proceed only if you trust the source.",
             footer_text: "Powered by Big Brother The Musical - Smart Contract by Avv. Marcello Stanca © June 2025",
-            footer_privacy_link: "Privacy Policy"
+            footer_privacy_link: "Privacy Policy",
+            music_preview_title: "Music Preview - Big Brother The Musical",
+            music_preview_description: "Listen to a preview of the main musical track from 'Big Brother The Musical', the innovative project that combines theatrical art and blockchain technology."
         }
     };
     let currentLang = 'it';

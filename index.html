@@ -19,6 +19,7 @@
             text-align: center;
             line-height: 1.6;
             font-size: 16px;
+            padding-top: 220px; /* Space for fixed banner */
         }
         h1 { color: #4CAF50; font-size: 2.2em; margin-bottom: 10px; }
         h2 { color: #2e7d32; font-size: 1.8em; margin-top: 40px; margin-bottom: 15px; }
@@ -184,7 +185,7 @@
             .close { right: 16px; top: 8px; }
         }
         @media (max-width: 768px) {
-            body { margin: 10px; font-size: 15px; }
+            body { margin: 10px; font-size: 15px; padding-top: 140px; }
             h1 { font-size: 1.8em; }
             h2 { font-size: 1.5em; }
             h3 { font-size: 1.2em; }
@@ -200,6 +201,9 @@
             }
             .image-card { padding: 10px; }
             .lang-switcher { text-align: center; }
+            .orwell-banner {
+                height: 120px;
+            }
         }
         @media (max-width: 480px) {
             body { font-size: 14px; }
@@ -384,9 +388,33 @@
             margin-top: 10px;
             font-style: italic;
         }
+        
+        /* Sticky banner styles */
+        .orwell-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .orwell-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
     </style>
 </head>
 <body>
+    <!-- Sticky OrwellBanner -->
+    <div class="orwell-banner">
+        <img src="images-preview/OrwellBanner.png" alt="Big Brother The Musical - OrwellBanner">
+    </div>
+    
     <div class="lang-switcher">
         <button class="lang-button" id="toggleLangButton" onclick="switchLanguage()" aria-live="polite" aria-label="Cambia lingua">Traduci e leggi in lingua inglese</button>
     </div>

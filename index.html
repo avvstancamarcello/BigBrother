@@ -523,20 +523,20 @@
     <script>
     // Galleria immagini preview locale + accessibilità + mint
     const imageNames = [
-      "5_watermarked.jpg", "10_watermarked.jpg", "15_watermarked.jpg", "20_watermarked.jpg",
-      "25_watermarked.jpg", "30_watermarked.jpg", "35_watermarked.jpg", "40_watermarked.jpg",
-      "45_watermarked.jpg", "50_watermarked.jpg", "55_watermarked.jpg", "60_watermarked.jpg",
-      "65_watermarked.jpg", "70_watermarked.jpg", "75_watermarked.jpg", "80_watermarked.jpg",
-      "85_watermarked.jpg", "90_watermarked.jpg", "95_watermarked.jpg", "100_watermarked.jpg"
+      "5_watermarked_double_watermarked.png", "10_watermarked_double_watermarked.png", "15_watermarked_double_watermarked.png", "20_watermarked_double_watermarked.png",
+      "25_watermarked_double_watermarked.png", "30_watermarked_double_watermarked.png", "35_watermarked_double_watermarked.png", "40_watermarked_double_watermarked.png",
+      "45_watermarked_double_watermarked.png", "50_watermarked_double_watermarked.png", "55_watermarked_double_watermarked.png", "60_watermarked_double_watermarked.png",
+      "65_watermarked_double_watermarked.png", "70_watermarked_double_watermarked.png", "75_watermarked_double_watermarked.png", "80_watermarked_double_watermarked.png",
+      "85_watermarked_double_watermarked.png", "90_watermarked_double_watermarked.png", "95_watermarked_double_watermarked.png", "100_watermarked_double_watermarked.png"
     ];
     const imageContainer = document.getElementById('image-container');
     imageNames.forEach(name => {
       const imageCard = document.createElement('div');
       imageCard.className = 'image-card';
       imageCard.innerHTML = `
-        <img src="images-preview/${name}" alt="BBTM NFT ${name}"
-             onclick="openModal('images-preview/${name}')"
-             onkeydown="if(event.key==='Enter'||event.key===' '){openModal('images-preview/${name}')}"
+        <img src="images/officials-preview/Watermarked_double_compressed/${name}" alt="BBTM NFT ${name}"
+             onclick="openModal('images/officials-preview/Watermarked_double_compressed/${name}')"
+             onkeydown="if(event.key==='Enter'||event.key===' '){openModal('images/officials-preview/Watermarked_double_compressed/${name}')}"
              tabindex="0">
         <p>Immagine: ${name}</p>
         <button class="mint-btn" onclick="mintNFT('${name}')">Mint NFT</button>

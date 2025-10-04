@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="theme-color" content="#4CAF50">
     <!-- ethers.js e abi.js -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
     <script src="abi.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.umd.min.js"></script>
     <script src="main.js"></script>
     <style>
         body {
@@ -146,11 +146,223 @@
             text-align: justify;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
-        .security-recommendation-note h3 {
+                .security-recommendation-note h3 {
             color: #856404;
             text-align: center;
-            margin-top: 0;
-            margin-bottom: 10px;
+        }
+        
+        /* Modal Responsive per Pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: pointer;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        .modal-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        .orwell-quote {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 1.8em;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .nft-value {
+            font-size: 1.4em;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        /* Wallet Selector */
+        .wallet-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .wallet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .wallet-btn {
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .wallet-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Wallet Modal Styles */
+        .wallet-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wallet-selector {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .wallet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 10px;
+        }
+        
+        .wallet-header h3 {
+            color: #ff0000;
+            margin: 0;
+        }
+        
+        .wallet-close {
+            font-size: 30px;
+            color: #ff0000;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .wallet-close:hover {
+            color: #cc0000;
+        }
+        
+        .mint-info {
+            background: rgba(255,0,0,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .mint-info p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .wallet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .wallet-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wallet-option:hover {
+            border-color: #ff0000;
+            background: rgba(255,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .wallet-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .wallet-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            body { margin: 10px; }
+            .intro-text, .content-section { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+            h3 { font-size: 1.2em; }
+            .image-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+            .image-card { padding: 10px; }
+            .lang-switcher { text-align: center; }
+            
+            .modal-content {
+                max-width: 95vw;
+                max-height: 85vh;
+            }
+            
+            .orwell-quote {
+                font-size: 1.4em;
+            }
+            
+            .wallet-grid {
+                grid-template-columns: 1fr;
+            }
         }
         /* Modal styles */
         .modal {
@@ -213,180 +425,28 @@
             }
             .image-card img { max-width: 80%; }
             .image-instruction { font-size: 1em; }
-            .token-table { font-size: 0.8em; }
-            .token-table th, .token-table td { padding: 4px; }
-        }
-
-        /* Stili per la tabella valori token */
-        .euro-price-control {
-            background-color: #e8f5e9;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-            border: 1px solid #c8e6c9;
-        }
-        .euro-price-control label {
-            font-weight: bold;
-            color: #2e7d32;
-            margin-right: 10px;
-        }
-        .euro-price-control input {
-            padding: 5px 10px;
-            border: 1px solid #c8e6c9;
-            border-radius: 4px;
-            margin: 0 10px;
-            width: 100px;
-        }
-        .euro-price-control button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .euro-price-control button:hover {
-            background-color: #388e3c;
-        }
-        .table-container {
-            overflow-x: auto;
-        }
-        .token-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .token-table th {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .token-table td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-        .token-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        .token-table tr:hover {
-            background-color: #e8f5e9;
-        }
-
-        /* Stili per il sistema di commenti */
-        .comment-form {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border: 1px solid #eee;
-        }
-        .rating-section {
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .rating-section label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-        .star-rating {
-            font-size: 2em;
-            margin: 10px 0;
-        }
-        .star {
-            cursor: pointer;
-            color: #ddd;
-            transition: color 0.2s;
-            margin: 0 2px;
-        }
-        .star:hover,
-        .star.active {
-            color: #ffd700;
-        }
-        #rating-display {
-            display: block;
-            margin-top: 10px;
-            font-style: italic;
-            color: #666;
-        }
-        .comment-input-section {
-            margin-top: 20px;
-        }
-        .comment-input-section label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-        .comment-input-section textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #c8e6c9;
-            border-radius: 4px;
-            resize: vertical;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-        .comment-input-section button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .comment-input-section button:hover {
-            background-color: #388e3c;
-        }
-        .comments-display {
-            margin-top: 30px;
-        }
-        .comments-display h3 {
-            color: #2e7d32;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 5px;
-        }
-        #comments-list {
-            margin-top: 15px;
-        }
-        .comment-item {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #4CAF50;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .comment-rating {
-            color: #ffd700;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-        .comment-text {
-            color: #333;
-            line-height: 1.5;
-        }
-        .comment-timestamp {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 10px;
-            font-style: italic;
         }
     </style>
 </head>
 <body>
+    <!-- BEGIN: VIDEO-MUSICAL-SECTION -->
+    <!-- Sentinel per sostituzioni automatiche future -->
+    <section id="video-musical" style="margin:40px auto; max-width:820px;">
+        <h2 style="font-size:1.6em; margin-bottom:10px;">Trailer / Video: Big Brother The Musical</h2>
+        <video controls playsinline preload="metadata" width="800" poster="images-preview/OrwellBanner.png" 
+               aria-label="Trailer Big Brother The Musical" 
+               title="Video promozionale del musical Big Brother"
+               style="max-width:100%; border:2px solid #4CAF50; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+            <source src="images-preview/BBTMTheMusical.mp4" type="video/mp4">
+            Il tuo browser non supporta il tag video HTML5. Se il video non parte, puoi scaricarlo direttamente dal link sopra.
+        </video>
+        <p style="margin-top:8px;">
+            <a href="images-preview/BBTMTheMusical.mp4" target="_blank" rel="noopener">Guarda il trailer in una nuova scheda</a> |
+            <a href="images-preview/BBTMTheMusical.mp4" download>Scarica il video</a>
+        </p>
+    </section>
+    <!-- END: VIDEO-MUSICAL-SECTION -->
+
     <div class="lang-switcher">
         <button class="lang-button" id="toggleLangButton" onclick="switchLanguage()" aria-live="polite" aria-label="Cambia lingua">Traduci e leggi in lingua inglese</button>
     </div>
@@ -408,64 +468,23 @@
             <img class="modal-content" id="modal-img">
         </div>
 
-        <!-- Tabella valori TokenID -->
-        <div class="content-section" role="region" aria-labelledby="token_table_title">
-            <h2 data-key="token_table_title" id="token_table_title">Tabella Valori Token BBTM</h2>
-            
-            <div class="euro-price-control">
-                <label for="euro-price-input" data-key="euro_price_label">Prezzo EUR/POL:</label>
-                <input type="number" id="euro-price-input" min="0" step="0.01" value="1.00" onchange="updateEuroPrices(parseFloat(this.value))">
-                <button onclick="updateEuroPrices(parseFloat(document.getElementById('euro-price-input').value))" data-key="update_prices_btn">Aggiorna Prezzi</button>
-            </div>
-
-            <div class="table-container">
-                <table class="token-table" id="token-table">
-                    <thead>
-                        <tr>
-                            <th data-key="col_token_id">Token ID</th>
-                            <th data-key="col_bbtm_value">Valore BBTM</th>
-                            <th data-key="col_pol_value">Valore POL</th>
-                            <th data-key="col_euro_value">Prezzo EUR</th>
-                            <th data-key="col_wei_value">Valore WEI</th>
-                        </tr>
-                    </thead>
-                    <tbody id="token-table-body">
-                        <!-- Token rows will be populated by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
+        <!-- About Section -->
+        <div class="content-section" style="padding: 20px; text-align: center; background: rgba(0,0,0,0.8); margin: 20px; color: white;">
+            <h2 style="color: #ff0000;">About Big Brother Token Movement</h2>
+            <p>The Big Brother Token Movement (BBTM) represents digital resistance against surveillance capitalism through blockchain technology.</p>
         </div>
 
-        <!-- Sistema di commenti e valutazioni -->
-        <div class="content-section" role="region" aria-labelledby="comment_section_title">
-            <h2 data-key="comment_section_title" id="comment_section_title">Lascia un Commento</h2>
-            
-            <div class="comment-form">
-                <div class="rating-section">
-                    <label data-key="rating_label">Valutazione (opzionale):</label>
-                    <div class="star-rating" id="star-rating">
-                        <span class="star" data-rating="1">☆</span>
-                        <span class="star" data-rating="2">☆</span>
-                        <span class="star" data-rating="3">☆</span>
-                        <span class="star" data-rating="4">☆</span>
-                        <span class="star" data-rating="5">☆</span>
-                    </div>
-                    <span id="rating-display" data-key="no_rating">Nessuna valutazione</span>
-                </div>
-                
-                <div class="comment-input-section">
-                    <label for="comment-text" data-key="comment_label">Commento anonimo:</label>
-                    <textarea id="comment-text" rows="4" placeholder="Scrivi il tuo commento qui..." data-key="comment_placeholder"></textarea>
-                    <button onclick="submitComment()" data-key="submit_comment_btn">Invia Commento</button>
-                </div>
-            </div>
+        <!-- Orwell Quotes Section -->
+        <div class="content-section" style="padding: 20px; text-align: center; background: rgba(255,0,0,0.1); margin: 20px;">
+            <h2 style="color: #ff0000;">George Orwell's Vision</h2>
+            <p>"Big Brother is watching you. War is peace. Freedom is slavery. Ignorance is strength."</p>
+            <p>Collect all 20 NFTs to complete Orwell's prophetic warnings about surveillance and control.</p>
+        </div>
 
-            <div class="comments-display" id="comments-display">
-                <h3 data-key="comments_title">Commenti della Community</h3>
-                <div id="comments-list">
-                    <!-- Comments will be displayed here -->
-                </div>
-            </div>
+        <!-- How it Works -->
+        <div class="content-section" style="padding: 20px; text-align: center; background: rgba(0,0,0,0.8); margin: 20px; color: white;">
+            <h2 style="color: #ff0000;">Token Economics</h2>
+            <p>Each NFT contains a piece of Orwell's wisdom, valued from 5 to 100 BBTM tokens based on rarity and significance.</p>
         </div>
 
         <div class="content-section" role="region" aria-labelledby="official_presentation_title">
@@ -494,7 +513,7 @@
         <section class="privacy-policy-section" id="privacy-policy" role="region" aria-labelledby="privacy_policy_title">
             <h2 data-key="privacy_policy_title" id="privacy_policy_title">Privacy Policy</h2>
             <h3 data-key="data_collection_title">Raccolta Dati Personali</h3>
-            <p data-key="data_collection_para1">Questo sito non raccoglie direttamente alcuna informazione personale identificabile dagli utenti.</p>
+            <p data-key="data_collection_para1">🔒 <strong></strong>Questo sito non raccoglie dati personali</strong>. L'acquisto di NFT e FT viene eseguito dall'utente tramite applicazioni anonime (MetaMask, Coinbase Wallet, Trust Wallet, Binance Wallet, etc.) che registrano sulla blockchain solo dati alfanumerici anonimi. Le transazioni rispettano la massima privacy e anonimato garantiti dalla tecnologia blockchain decentralizzata.</p>
             <h3 data-key="cookies_tracking_title">Cookie e Tecnologie di Tracciamento</h3>
             <p data-key="cookies_tracking_para1">Non utilizziamo cookie o tecnologie di tracciamento per monitorare il comportamento degli utenti.</p>
             <h3 data-key="ipfs_content_title">Contenuti Ospitati su IPFS</h3>
@@ -521,41 +540,177 @@
     </div>
 
     <script>
-    // Galleria immagini preview locale + accessibilità + mint
-    const imageNames = [
-      "5_watermarked.jpg", "10_watermarked.jpg", "15_watermarked.jpg", "20_watermarked.jpg",
-      "25_watermarked.jpg", "30_watermarked.jpg", "35_watermarked.jpg", "40_watermarked.jpg",
-      "45_watermarked.jpg", "50_watermarked.jpg", "55_watermarked.jpg", "60_watermarked.jpg",
-      "65_watermarked.jpg", "70_watermarked.jpg", "75_watermarked.jpg", "80_watermarked.jpg",
-      "85_watermarked.jpg", "90_watermarked.jpg", "95_watermarked.jpg", "100_watermarked.jpg"
+    // Frase famosa di George Orwell divisa in 20 parti
+    const orwellQuote = [
+        "Big", "Brother", "is", "watching", 
+        "you.", "War", "is", "peace,", 
+        "freedom", "is", "slavery,", "ignorance", 
+        "is", "strength.", "Doublethink", "means", 
+        "the", "power", "of", "holding."
     ];
+    
+    // Galleria immagini con valori BBTM progressivi
+    const imageNames = [
+      "5_watermarked_double_watermarked.png", "10_watermarked_double_watermarked.png", "15_watermarked_double_watermarked.png", "20_watermarked_double_watermarked.png",
+      "25_watermarked_double_watermarked.png", "30_watermarked_double_watermarked.png", "35_watermarked_double_watermarked.png", "40_watermarked_double_watermarked.png",
+      "45_watermarked_double_watermarked.png", "50_watermarked_double_watermarked.png", "55_watermarked_double_watermarked.png", "60_watermarked_double_watermarked.png",
+      "65_watermarked_double_watermarked.png", "70_watermarked_double_watermarked.png", "75_watermarked_double_watermarked.png", "80_watermarked_double_watermarked.png",
+      "85_watermarked_double_watermarked.png", "90_watermarked_double_watermarked.png", "95_watermarked_double_watermarked.png", "100_watermarked_double_watermarked.png"
+    ];
+    
     const imageContainer = document.getElementById('image-container');
-    imageNames.forEach(name => {
+    imageNames.forEach((name, index) => {
+      const value = (index + 1) * 5; // Valori da 5 a 100
+      const quoteWord = orwellQuote[index]; // Parola della frase
+      
       const imageCard = document.createElement('div');
       imageCard.className = 'image-card';
       imageCard.innerHTML = `
-        <img src="images-preview/${name}" alt="BBTM NFT ${name}"
-             onclick="openModal('images-preview/${name}')"
-             onkeydown="if(event.key==='Enter'||event.key===' '){openModal('images-preview/${name}')}"
+        <img src="images/officials-preview/Watermarked_double/${name}" alt="BBTM NFT #${index + 1} - ${quoteWord}"
+             onclick="openModal('images/officials-preview/Watermarked_double/${name}', '${quoteWord}', ${value})"
+             onkeydown="if(event.key==='Enter'||event.key===' '){openModal('images/officials-preview/Watermarked_double_compressed/${name}', '${quoteWord}', ${value})}"
              tabindex="0">
-        <p>Immagine: ${name}</p>
-        <button class="mint-btn" onclick="mintNFT('${name}')">Mint NFT</button>
+        <div class="nft-value">${value} BBTM</div>
+        <p><strong>${quoteWord}</strong></p>
+        <button class="mint-btn" onclick="mintNFT('${name}', ${value}, '${quoteWord}', event)">Mint NFT</button>
       `;
       imageContainer.appendChild(imageCard);
     });
-    function openModal(src) {
-      document.getElementById('modal').style.display = "block";
-      document.getElementById('modal-img').src = src;
+    function openModal(src, quoteWord, value) {
+      const modal = document.getElementById('modal');
+      modal.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-overlay">
+          <img class="modal-content" src="${src}" alt="Big Brother NFT">
+          <div class="orwell-quote">${quoteWord}</div>
+          <div class="nft-value">${value} BBTM Token</div>
+          <p>Parte della frase immortale di George Orwell</p>
+          <button class="mint-btn" onclick="mintNFT('${src.split('/').pop()}', ${value}, '${quoteWord}', event)">Mint NFT - ${value} BBTM</button>
+        </div>
+      `;
+      modal.style.display = "block";
     }
+    
     function closeModal() {
       document.getElementById('modal').style.display = "none";
+    }
+    
+    function mintNFT(filename, value, quoteWord, event) {
+      event.stopPropagation();
+      showWalletSelector(filename, value, quoteWord);
+    }
+    
+    function showWalletSelector(filename, value, quoteWord) {
+      const walletModal = document.createElement('div');
+      walletModal.id = 'wallet-modal';
+      walletModal.className = 'wallet-modal-overlay';
+      
+      const wallets = [
+        'MetaMask', 'WalletConnect', 'Coinbase Wallet', 'Trust Wallet', 'Rainbow',
+        'Phantom', 'Solflare', 'Exodus', 'Atomic Wallet', 'SafePal',
+        'TokenPocket', 'Math Wallet', 'Binance Chain Wallet', 'Torus', 'Portis',
+        'Fortmatic', 'Authereum', 'Squarelink', 'Bitski', 'Venly',
+        'WalletLink', 'Gnosis Safe', 'Argent', 'Zerion', 'DeFi Wallet'
+      ];
+      
+      walletModal.innerHTML = `
+        <div class="wallet-selector">
+          <div class="wallet-header">
+            <h3>Seleziona Wallet per Mint</h3>
+            <span class="wallet-close" onclick="closeWalletModal()">&times;</span>
+          </div>
+          <div class="mint-info">
+            <p><strong>NFT:</strong> ${filename}</p>
+            <p><strong>Valore:</strong> ${value} BBTM Token</p>
+            <p><strong>Parola Orwell:</strong> "${quoteWord}"</p>
+          </div>
+          <div class="wallet-grid">
+            ${wallets.map(wallet => `
+              <div class="wallet-option" onclick="connectWallet('${wallet}', '${filename}', ${value}, '${quoteWord}')">
+                <div class="wallet-icon">🔗</div>
+                <div class="wallet-name">${wallet}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(walletModal);
+    }
+    
+    function closeWalletModal() {
+      const walletModal = document.getElementById('wallet-modal');
+      if (walletModal) {
+        walletModal.remove();
+      }
+    }
+    
+    async function connectWallet(walletName, filename, value, quoteWord) {
+        try {
+            console.log(`Connecting ${walletName} for minting ${filename} - ${value} BBTM - "${quoteWord}"`);
+            
+            if (typeof window.ethereum === 'undefined') {
+                alert('MetaMask non installato! Installa MetaMask per continuare.');
+                return;
+            }
+            
+            // Richiedi connessione wallet
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            
+            // Configurazione provider
+            const INFURA_RPC_URL = 'https://polygon-mainnet.infura.io/v3/c690c86b64b74bd5a69ad2d32cf2a0c6';
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            
+            // Verifica network Polygon
+            const network = await provider.getNetwork();
+            if (network.chainId !== 137) {
+                alert('Cambia network a Polygon Mainnet (Chain ID: 137)!');
+                return;
+            }
+            
+            // Ottieni indirizzo utente
+            const userAddress = await signer.getAddress();
+            const tokenId = Date.now() + Math.floor(Math.random() * 1000);
+            
+            // Carica contratto
+            const contractAddress = '0xbBf8573736e6D1f20a26d2F0B8319C8021B015D1';
+            const contract = new ethers.Contract(contractAddress, contractABI, signer);
+            
+            // Stima gas
+            let gasLimit;
+            try {
+                const gasEstimate = await contract.estimateGas.safeMint(userAddress, tokenId);
+                gasLimit = gasEstimate.mul(120).div(100); // +20% buffer
+            } catch (error) {
+                gasLimit = ethers.utils.parseUnits('300000', 'wei');
+            }
+            
+            alert(`🚀 Preparazione mint NFT con ${walletName}!
+            
+📄 Token ID: ${tokenId}
+💰 Valore: ${value} BBTM  
+📖 Parola Orwell: "${quoteWord}"
+⛽ Gas stimato: ${gasLimit.toString()}
+🔗 Network: Polygon Mainnet
+            
+Procedi con la transazione in MetaMask!`);
+            
+            closeWalletModal();
+            closeModal();
+            
+        } catch (error) {
+            console.error('Errore connessione wallet:', error);
+            alert(`❌ Errore: ${error.message}`);
+        }
     }
     document.addEventListener('keydown', function(e) {
       if (e.key === "Escape") closeModal();
     });
 
     // Mint NFT con Metamask
-    async function mintNFT(imageName) {
+    async function mintNFT(imageName,event) {
+
         if (typeof window.ethereum === 'undefined') {
             alert('Per favore installa Metamask per mintare NFT.');
             return;
@@ -570,21 +725,68 @@
         }
 
         // ✅ Ora è sicuro loggare                 
-        console.log("ABI disponibile?", typeof contractABI, contractABI);
-        
+        console.log("Ethers disponibile?", typeof ethers, ethers);
+        if (typeof ethers === 'undefined') {
+             alert('Ethers.js non caricato correttamente.');
+             return;
+        }
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = "Minting...";
+
 
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            // Configurazione Infura + MetaMask
+            const INFURA_RPC_URL = 'https://polygon-mainnet.infura.io/v3/c690c86b64b74bd5a69ad2d32cf2a0c6';
+            let provider;
+            
+            if (typeof window.ethereum !== 'undefined') {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                console.log('Using MetaMask provider');
+            } else {
+                provider = new ethers.providers.JsonRpcProvider(INFURA_RPC_URL);
+                console.log('Using Infura fallback provider');
+            }
+            
             const signer = provider.getSigner();
             const contract = new ethers.Contract(contractAddress, contractABI, signer);
-            // Personalizzare secondo la funzione del tuo smart contract
-            const tx = await contract.mintNFT(account, imageName);
+
+            // Verifica network Polygon
+            const network = await provider.getNetwork();
+            if (network.chainId !== 137) {
+                alert('Cambia network a Polygon Mainnet (Chain ID: 137)!');
+                return;
+            }
+            
+            // Genera Token ID casuale
+            const tokenId = Date.now() + Math.floor(Math.random() * 1000);
+            
+            // Stima gas automatica
+            let gasLimit;
+            try {
+                const gasEstimate = await contract.estimateGas.safeMint(account, tokenId);
+                gasLimit = gasEstimate.mul(120).div(100); // +20% buffer
+                console.log('Gas stimato:', gasLimit.toString());
+            } catch (error) {
+                console.log('Gas estimation fallback:', error);
+                gasLimit = ethers.utils.parseUnits('300000', 'wei'); // Fallback
+            }
+            
+            // Mint NFT con gas ottimizzato
+            const tx = await contract.safeMint(account, tokenId, {
+                gasLimit: gasLimit
+            });
             await tx.wait();
+
             alert('Mint effettuato! Transazione: ' + tx.hash);
         } catch (err) {
             alert('Mint fallito: ' + (err?.reason || err?.message || err));
+        } finally {
+            btn.disabled = false;
+            btn.textContent = "Mint NFT";        
         }
     }
 
@@ -598,21 +800,6 @@
             intro_para1: "Observe these images. This is not just an image gallery, but something truly innovative! It's a gallery of <b>digital values</b>, original artworks representing an ambitious creative project.",
             intro_para2: "Let me explain 👇",
             image_instruction_text: "Show image fullscreen by clicking any image",
-            token_table_title: "BBTM Token Values Table",
-            euro_price_label: "EUR/POL Price:",
-            update_prices_btn: "Update Prices",
-            col_token_id: "Token ID",
-            col_bbtm_value: "BBTM Value",
-            col_pol_value: "POL Value",
-            col_euro_value: "EUR Price",
-            col_wei_value: "WEI Value",
-            comment_section_title: "Leave a Comment",
-            rating_label: "Rating (optional):",
-            no_rating: "No rating",
-            comment_label: "Anonymous comment:",
-            comment_placeholder: "Write your comment here...",
-            submit_comment_btn: "Submit Comment",
-            comments_title: "Community Comments",
             official_presentation_title: "Official Presentation: \"Big Brother The Musical\" – The Ultimate Work Funded by Blockchain 🎉",
             section_intro_project: "Introduction to the Project 🎭",
             intro_project_para1: "I am here to present a project that transcends the boundaries of art and technology...",
@@ -671,3 +858,4 @@
     </script>
 </body>
 </html>
+ }
